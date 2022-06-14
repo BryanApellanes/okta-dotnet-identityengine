@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D7171281-2FF1-4C47-BACB-BE2D532374A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okta.IdentityEngine", "Okta.IdentityEngine\Okta.IdentityEngine.csproj", "{0F1A3EC9-8654-48DD-A1B0-4E1AFF11F275}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okta.IdentityEngine.Tests", "Okta.IdentityEngine.Tests\Okta.IdentityEngine.Tests.csproj", "{1DBB9EB8-DD03-4942-B9AD-DACA200D4AEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okta.IdentityEngine.Mvc.Sample", "Samples\Okta.IdentityEngine.Mvc.Sample\Okta.IdentityEngine.Mvc.Sample.csproj", "{F773B672-4098-42B9-9826-24B2DEBED4BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okta.IdentityEngine.WebApp.Sample", "Samples\Okta.IdentityEngine.WebApp.Sample\Okta.IdentityEngine.WebApp.Sample.csproj", "{7A0D9A05-1C6C-4568-9D08-F27D9C924613}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okta.IdentityEngine.AspNetCore", "Okta.IdentityEngine.AspNetCore\Okta.IdentityEngine.AspNetCore.csproj", "{722217EA-D4F4-4FCB-A717-585A99E27373}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bam.Ion", "Bam.Ion", "{31F91A36-275D-4928-AAD7-AC1B3DAA7BF9}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Bam.Ion.Shared", "submodules\Bam.Ion\Bam.Ion.Shared\Bam.Ion.Shared.shproj", "{E90AD551-0D0B-40BB-98A5-18D17CD5F4BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bam.Ion", "submodules\Bam.Ion\Bam.Ion\Bam.Ion.csproj", "{7FC55314-5911-46C7-8774-B0785F6C62B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bam.Ion.Tests", "submodules\Bam.Ion\Bam.Ion.Tests\Bam.Ion.Tests.csproj", "{1DB4D1D3-4DED-4C0F-8E80-6D67717C5101}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F1A3EC9-8654-48DD-A1B0-4E1AFF11F275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F1A3EC9-8654-48DD-A1B0-4E1AFF11F275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F1A3EC9-8654-48DD-A1B0-4E1AFF11F275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F1A3EC9-8654-48DD-A1B0-4E1AFF11F275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DBB9EB8-DD03-4942-B9AD-DACA200D4AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DBB9EB8-DD03-4942-B9AD-DACA200D4AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DBB9EB8-DD03-4942-B9AD-DACA200D4AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DBB9EB8-DD03-4942-B9AD-DACA200D4AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F773B672-4098-42B9-9826-24B2DEBED4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F773B672-4098-42B9-9826-24B2DEBED4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F773B672-4098-42B9-9826-24B2DEBED4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F773B672-4098-42B9-9826-24B2DEBED4BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A0D9A05-1C6C-4568-9D08-F27D9C924613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A0D9A05-1C6C-4568-9D08-F27D9C924613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A0D9A05-1C6C-4568-9D08-F27D9C924613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A0D9A05-1C6C-4568-9D08-F27D9C924613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{722217EA-D4F4-4FCB-A717-585A99E27373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{722217EA-D4F4-4FCB-A717-585A99E27373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{722217EA-D4F4-4FCB-A717-585A99E27373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{722217EA-D4F4-4FCB-A717-585A99E27373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC55314-5911-46C7-8774-B0785F6C62B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC55314-5911-46C7-8774-B0785F6C62B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC55314-5911-46C7-8774-B0785F6C62B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC55314-5911-46C7-8774-B0785F6C62B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB4D1D3-4DED-4C0F-8E80-6D67717C5101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB4D1D3-4DED-4C0F-8E80-6D67717C5101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB4D1D3-4DED-4C0F-8E80-6D67717C5101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB4D1D3-4DED-4C0F-8E80-6D67717C5101}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F773B672-4098-42B9-9826-24B2DEBED4BB} = {D7171281-2FF1-4C47-BACB-BE2D532374A2}
+		{7A0D9A05-1C6C-4568-9D08-F27D9C924613} = {D7171281-2FF1-4C47-BACB-BE2D532374A2}
+		{E90AD551-0D0B-40BB-98A5-18D17CD5F4BC} = {31F91A36-275D-4928-AAD7-AC1B3DAA7BF9}
+		{7FC55314-5911-46C7-8774-B0785F6C62B2} = {31F91A36-275D-4928-AAD7-AC1B3DAA7BF9}
+		{1DB4D1D3-4DED-4C0F-8E80-6D67717C5101} = {31F91A36-275D-4928-AAD7-AC1B3DAA7BF9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4262A7B7-5587-44DD-9B68-4EC422D78F2D}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		submodules\Bam.Ion\Bam.Ion.Shared\Bam.Ion.projitems*{7fc55314-5911-46c7-8774-b0785f6c62b2}*SharedItemsImports = 5
+		submodules\Bam.Ion\Bam.Ion.Shared\Bam.Ion.projitems*{e90ad551-0d0b-40bb-98a5-18d17cd5f4bc}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

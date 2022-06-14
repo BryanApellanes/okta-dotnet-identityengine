@@ -1,0 +1,49 @@
+﻿@using Okta.IdentityEngine
+@using Okta.IdentityEngine.Client
+@using Okta.IdentityEngine.Ion
+
+@model  Okta.IdentityEngine.Client.IdentityState
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<div>
+    <h1 class="display-4">Sign In</h1>
+
+    <h2>Remediation Info</h2>
+    @foreach(Remediation remediation in Model.Remediations)
+    {
+        <div style="border: 1px dashed black; margin-bottom: 10px; padding: 10px;">
+            <h3>name: @remediation.Name</h3>
+            <div>href: @remediation.Href</div>
+            <div>form href: @remediation.Form.Href</div>
+            <div>form method: @remediation.Form.Method</div>
+            <div style="margin-left: 50px">
+                rel:
+                <div style="margin-left: 10px">
+                @foreach(string rel in remediation.Form.RelationTypes)
+                {
+                    @rel    
+                }
+                </div>
+            </div>
+            <hr />
+            <div style="margin-left: 50px;">
+                <h4>Form Fields</h4>
+                @foreach(IonFormField formField in remediation.Form.Fields)
+                {
+                    <div>name: @formField.Name</div>
+                    <div>label: @formField.Label</div>
+                    <div>type: @formField.TypeString</div>
+                    <div>string value: @formField.ValueString</div>
+                    <div>object value: @formField.Value</div>
+                    <div>required: @formField.Required</div>
+                    <div>secret: @formField.Secret</div>
+                    <hr />
+                }
+        </div>
+        </div> 
+    }
+
+    
+</div>

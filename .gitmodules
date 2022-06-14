@@ -1,0 +1,3 @@
+[submodule "submodules/Bam.Ion"]
+	path = submodules/Bam.Ion
+	url = https://github.com/BryanApellanes/Bam.Ion.git
