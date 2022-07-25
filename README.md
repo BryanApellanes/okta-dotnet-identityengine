@@ -158,16 +158,33 @@ To invoke the associated [remediation invocation](#okta-identity-engine-terminol
 ## SDK Client
 Because members included in the OIE response [root object](#ion-spec-terminology) change as the authentication flow progresses, it isn't possible to define a static [class](https://en.wikipedia.org/wiki/Class_(computer_programming)) that represents it.  In order to reference the members of the OIE response [root object](#ion-spec-terminology) an Ion API is recommended.  See also, [Ion Object Model](#ion-object-model).
 
-Additionally, because the underlying design of OIE is based on a call and response model, the SDK requires some awareness of the UI and related views.  See also, [SDK Object Model](#sdk-object-model).
+Additionally, because the underlying design of **OIE** is based on a call and response model, the SDK requires some awareness of the UI and related views.  See also, [SDK Object Model](#sdk-object-model).
 
 ### Ion Object Model
+This section describes the primary class definitions used to parse ion json.  Ion is used to describe the class or object structure of higher level concepts; it does not inherently provide strongly typed classes that describe a problem domain.  Instead, it provides an intermediate language, defined as a superset to json, that is used to define the class or object structure within a problem domain.  
 
-    - ion object model to reference root members
-    - loop over members
+- **IonValueObject** - Represents an ion value object, see https://ionspec.org/#valueobjects.
+- **IonMember** - Represents a property of an ion value object.
+
+The following shows how to parse an ion json response as an IonValueObject.
+
+```csharp
+IonValueObject obj = IonValueObject.ReadObject(ionJson);
+```
+
+The IonMember class is used to cast or convert as necessary a property value to the appropriate type.
+
+```csharp
+string href = IonValueObject.ReadObject(ionJson)["href"].ValueAs<string>();
+```
 
 ### SDK Object Model
+This section describes the primary class definitions used to programatically interact with high level **OIE** concepts.  The SDK Object model uses the Ion Object Model internally to provide high level class constructs that describe the **OIE** problem domain.
 
+- **IdentityState** - represents the top level object of an Identity Engine response.
+- **Remediation** - represents an action used to "remedy" the unauthenticated state of the current user.
 
 ### View Rendering
+This section describes the strategy used to render an authentication view from an **OIE** response.
 
 

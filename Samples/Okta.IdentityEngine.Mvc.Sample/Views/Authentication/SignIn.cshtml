@@ -14,10 +14,10 @@
     @foreach(Remediation remediation in Model.Remediations)
     {
         <div style="border: 1px dashed black; margin-bottom: 10px; padding: 10px;">
-            <h3>name: @remediation.Name</h3>
-            <div>href: @remediation.Href</div>
-            <div>form href: @remediation.Form.Href</div>
-            <div>form method: @remediation.Form.Method</div>
+            <h3>Remediation Name: @remediation.Name</h3>
+            <div>Href: @remediation.Href</div>
+            <div>Form Href: @remediation.Form.Href</div>
+            <div>Form Method: @remediation.Form.Method</div>
             <div style="margin-left: 50px">
                 rel:
                 <div style="margin-left: 10px">
@@ -29,16 +29,16 @@
             </div>
             <hr />
             <div style="margin-left: 50px;">
-                <h4>Form Fields</h4>
+                <h4>Remediation Form Fields</h4>
                 @foreach(IonFormField formField in remediation.Form.Fields)
                 {
-                    <div>name: @formField.Name</div>
-                    <div>label: @formField.Label</div>
-                    <div>type: @formField.TypeString</div>
-                    <div>string value: @formField.ValueString</div>
-                    <div>object value: @formField.Value</div>
-                    <div>required: @formField.Required</div>
-                    <div>secret: @formField.Secret</div>
+                    <div>Form Field Name: @formField.Name</div>
+                    <div>Label: @formField.Label</div>
+                    <div>Type: @formField.TypeString</div>
+                    <div>String Value: @formField.ValueString</div>
+                    <div>Object Value: @formField.Value</div>
+                    <div>Is Required: @formField.Required</div>
+                    <div>Is Secret: @formField.Secret</div>
                     <hr />
                 }
         </div>
