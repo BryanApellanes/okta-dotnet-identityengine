@@ -189,4 +189,4 @@ This section describes the strategy used to render an authentication view or sig
 
 An [OIE Response](#oie-response) can be thought of as a [ViewModel](https://viewmodel.org/) and as such all related concepts apply.  The simplest rendering strategy for an OIE Response is to render each remediation included in IdenityState.Remediations. See example [okta-dotnet-identityengine](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/Samples/Okta.IdentityEngine.Mvc.Sample/Views/Authentication/SignIn.cshtml#L14). 
 
-Each Remediation Object included in IdentityState.Remediations describes a potential Remediation invocation that will result in a change in the IdentityState.
+Each Remediation Object included in IdentityState.Remediations describes a potential Remediation invocation that results in a change in the IdentityState.
