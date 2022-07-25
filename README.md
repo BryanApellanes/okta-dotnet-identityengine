@@ -95,7 +95,7 @@ The [root object](#ion-spec-terminology) may contain the following members at di
 - **authenticatorEnrollments** - The `authenticatorEnrollments` member is an ion [collection object](#ion-spec-terminology) that contains objects that describe [authenticator enrollments](#okta-identity-engine-terminology).
 
 ### Remediation Object
-A `remediation object` is an ion [collection object](#ion-spec-terminology) that contains [remediation parameter property descriptors](#okta-identity-engine-terminology).  
+A `remediation object` is an ion [collection object](#ion-spec-terminology) that contains [remediation parameter properties](#okta-identity-engine-terminology).  
 ```json
 {
     "rel": [
@@ -181,10 +181,12 @@ string href = IonValueObject.ReadObject(ionJson)["href"].ValueAs<string>();
 ### SDK Object Model
 This section describes the primary class definitions used to programatically interact with high level **OIE** concepts.  The SDK Object model uses the Ion Object Model internally to provide high level class constructs that describe the **OIE** problem domain.
 
-- **IdentityState** - represents the top level object of an Identity Engine response.
-- **Remediation** - represents an action used to "remedy" the unauthenticated state of the current user.
+- **IdentityState** - A class definition that ecapsulates the [Root Object](#root-object) of an [OIE Response](#oie-response).
+- **Remediation** - A class definition that encapsulates a [Remediation](#okta-identity-engine-terminology).
 
 ### View Rendering
-This section describes the strategy used to render an authentication view from an **OIE** response.
+This section describes the strategy used to render an authentication view or sign-in form, from an [OIE Response](#oie-response).
 
+An [OIE Response](#oie-response) can be thought of as a [ViewModel](https://viewmodel.org/) and as such all related concepts apply.  The simplest rendering strategy for an OIE Response is to render each remediation included in IdenityState.Remediations. See example [okta-dotnet-identityengine](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/Samples/Okta.IdentityEngine.Mvc.Sample/Views/Authentication/SignIn.cshtml#L14). 
 
+Each Remediation Object included in IdentityState.Remediations describes a potential Remediation invocation that will result in a change in the IdentityState.
