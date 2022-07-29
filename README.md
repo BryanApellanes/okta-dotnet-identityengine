@@ -9,7 +9,7 @@ The functionality of the current Okta Identity Engine SDK for .NET ****REQUIRES*
 This document describes **Okta Identity Engine** response structure and a strategy for rendering responses to accept input for the purpose of authentication.  
 
 ## Introducation
-**Okta Identity Engine** hereinafter referred to as **OIE**, is an authentication API modeled as a [state machine](https://developer.mozilla.org/en-US/docs/Glossary/State_machine); this allows a consumer of the API to design a rendering loop that renders responses from **OIE** that is resilient to changes in [Sign-on policies](https://help.okta.com/en/prod/Content/Topics/Security/policies/policies-home.htm).  Code in this repository is a reference implementation referred to as the Okta Dynamic Authentication Control herinafter referred to as **ODAC**.  
+**Okta Identity Engine** hereinafter referred to as **OIE**, is an authentication API modeled as a [state machine](https://developer.mozilla.org/en-US/docs/Glossary/State_machine); this allows a consumer of the API to design a rendering loop that renders responses from **OIE** that is resilient to changes in [Sign-on policies](https://help.okta.com/en/prod/Content/Topics/Security/policies/policies-home.htm).  Code in this repository is a reference implementation referred to as the **Okta Dynamic Authentication ControlPP herinafter referred to as **ODAC**.  
 
 ## Terminology
 This document uses common industry terminology as well as **OIE** specific terminology unique to this document and related works.
