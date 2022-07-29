@@ -3,13 +3,13 @@
 This document is a work in progress.
 
 ## Problem
-The functionality of the current Okta Identity Engine SDK ****REQUIRES**** policy configuration that results in a finite set of known JSON response data structures in a predetermined but undocumented sequence.  If a feature or functionality is added or changed, or if policy configuration is modified, the resulting response structures **MAY** not be supported by the SDK resulting in unexpected [sample application](https://github.com/okta/okta-idx-dotnet/tree/master/samples/samples-aspnet/embedded-auth-with-sdk) behavior or unexpected [Idx Client](https://github.com/okta/okta-idx-dotnet/blob/master/src/Okta.Idx.Sdk/IdxClient.cs) behavior, including unhandled exceptions. 
+The functionality of the current Okta Identity Engine SDK for .NET ****REQUIRES**** policy configuration that results in a finite set of known JSON response data structures in a predetermined but undocumented sequence.  If a feature or functionality is added or changed, or if policy configuration is modified, the resulting response structures **MAY** not be supported by the SDK resulting in unexpected [sample application](https://github.com/okta/okta-idx-dotnet/tree/master/samples/samples-aspnet/embedded-auth-with-sdk) behavior or unexpected [Idx Client](https://github.com/okta/okta-idx-dotnet/blob/master/src/Okta.Idx.Sdk/IdxClient.cs) behavior, including unhandled exceptions. 
 
 ## Abstract
 This document describes **Okta Identity Engine** response structure and a strategy for rendering responses to accept input for the purpose of authentication.  
 
 ## Introducation
-**Okta Identity Engine** hereinafter referred to as **OIE**, is an authentication API modeled as a [state machine](https://developer.mozilla.org/en-US/docs/Glossary/State_machine); this allows a consumer of the API to design a rendering loop that renders responses from **OIE** that is resilient to changes in [Sign-on policies](https://help.okta.com/en/prod/Content/Topics/Security/policies/policies-home.htm).  See [Sdk Client](#sdk-client).
+**Okta Identity Engine** hereinafter referred to as **OIE**, is an authentication API modeled as a [state machine](https://developer.mozilla.org/en-US/docs/Glossary/State_machine); this allows a consumer of the API to design a rendering loop that renders responses from **OIE** that is resilient to changes in [Sign-on policies](https://help.okta.com/en/prod/Content/Topics/Security/policies/policies-home.htm).  Code in this repository is a reference implementation referred to as the Okta Dynamic Authentication Control herinafter referred to as **ODAC**.  
 
 ## Terminology
 This document uses common industry terminology as well as **OIE** specific terminology unique to this document and related works.
@@ -161,9 +161,10 @@ Because members included in the OIE response [root object](#ion-spec-terminology
 Additionally, because the underlying design of **OIE** is based on a call and response model, the SDK requires some awareness of the UI and related views.  See also, [SDK Object Model](#sdk-object-model).
 
 ### Ion Object Model
-This section describes the primary class definitions used to parse ion json.  Ion is used to describe the class or object structure of higher level concepts; it does not inherently provide strongly typed classes that describe a problem domain.  Instead, it provides an intermediate language, defined as a superset to json, that is used to define the class or object structure within a problem domain.  
+Ion is used to describe the class or object structure of higher level concepts; it does not inherently provide strongly typed classes that describe a problem domain.  Instead, it provides an intermediate language, defined as a superset to json, that defines the class or object structure within a problem domain.  To simplify interaction with Ion based responses, an Ion based API library is recommended.  The reference Ion parsing implemention is found here https://github.com/BryanApellanes/Bam.Ion/tree/bam-ion-v0.2. 
 
-- **IonValueObject** - Represents an ion value object, see https://ionspec.org/#valueobjects.
+
+- **IonValueObject** - Represents an Ion value object, see https://ionspec.org/#valueobjects.
 - **IonMember** - Represents a property of an ion value object.
 
 The following shows how to parse an ion json response as an IonValueObject.
@@ -175,18 +176,62 @@ IonValueObject obj = IonValueObject.ReadObject(ionJson);
 The IonMember class is used to cast or convert as necessary a property value to the appropriate type.
 
 ```csharp
-string href = IonValueObject.ReadObject(ionJson)["href"].ValueAs<string>();
+IonValueObject obj = IonValueObject.ReadObject(ionJson);
+IonMember member = obj["href"];
+string href = member.ValueAs<string>();
 ```
 
 ### SDK Object Model
-This section describes the primary class definitions used to programatically interact with high level **OIE** concepts.  The SDK Object model uses the Ion Object Model internally to provide high level class constructs that describe the **OIE** problem domain.
+The SDK Object model uses the Ion Object Model internally to provide high level class constructs that describe the **OIE** problem domain.
 
 - **IdentityState** - A class definition that ecapsulates the [Root Object](#root-object) of an [OIE Response](#oie-response).
 - **Remediation** - A class definition that encapsulates a [Remediation](#okta-identity-engine-terminology).
 
-### View Rendering
-This section describes the strategy used to render an authentication view or sign-in form, from an [OIE Response](#oie-response).
+### View Render Loop
+An [OIE Response](#oie-response) can be thought of as a [ViewModel](https://viewmodel.org/) and as such all related concepts apply.  The simplest rendering strategy for an OIE Response is to render each remediation included in `IdenityState.Remediations`. See example [okta-dotnet-identityengine](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/Samples/Okta.IdentityEngine.Mvc.Sample/Views/Authentication/SignIn.cshtml#L14). 
 
-An [OIE Response](#oie-response) can be thought of as a [ViewModel](https://viewmodel.org/) and as such all related concepts apply.  The simplest rendering strategy for an OIE Response is to render each remediation included in IdenityState.Remediations. See example [okta-dotnet-identityengine](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/Samples/Okta.IdentityEngine.Mvc.Sample/Views/Authentication/SignIn.cshtml#L14). 
+Each _Remediation Object_ included in `IdentityState.Remediations` describes a potential _Remediation Invocation_ which results in a change in the IdentityState.
 
-Each Remediation Object included in IdentityState.Remediations describes a potential Remediation invocation that results in a change in the IdentityState.
+![Remediation Render Loop](./img/OIE-Render-loop.png)
+
+### Successful Authentication
+After a _Remediation Invocation_ the [OIE Response](#oie-response) may have a member named `successWithInteractionCode` which is both an [Ion Link](https://ionspec.org/#links) and an [Ion Value Object](#ion-object-model) which provides the necessary information used to acquire an authentication token.  If the `successWithInteractionCode` member is present, authentication has succeeded and you may proceed to retieve an authentication token using the information provided.
+
+```json
+{
+   "successWithInteractionCode":{
+      "rel":[
+         "create-form"
+      ],
+      "name":"issue",
+      "href":"https://foo.com/oauth2/foo/v1/token",
+      "method":"POST",
+      "value":[
+         {
+            "name":"grant_type",
+            "required":true,
+            "value":"interaction_code"
+         },
+         {
+            "name":"interaction_code",
+            "required":true,
+            "value":"Mj36FIck-Fr1845qXozlmCVD64Mx3sk3DrvPNVFB2E4"
+         },
+         {
+            "name":"client_id",
+            "required":true,
+            "value":"foo"
+         },
+         {
+            "name":"client_secret",
+            "required":true
+         },
+         {
+            "name":"code_verifier",
+            "required":true
+         }
+      ],
+      "accepts":"application/x-www-form-urlencoded"
+   }
+}
+```

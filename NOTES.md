@@ -1,0 +1,32 @@
+- update repository structure to make samples submodules
+- create unified asp sample: one sample with each type of sample built in and documented
+  - okta-hosted-login
+  - self-hosted-login
+  - social-login
+  - add OIE dynamic rendering sample (OIE authentication control).  See also, [okta-dotnet-identityengine](https://github.com/okta/okta-dotnet-identityengine/tree/release-v0.1) 
+    - implement OIE authentication control
+      - define & implement execution pipeline components and interfaces
+      - implement renderers
+        - Asp
+        - MAUI
+        - mustache?
+        - command line?
+      - implement policy providers
+        - spike - define and document required policy configuration for each cucumber scenario
+        - define and implement appropriate set of policy provider components to support each cucumber scenario
+    - document how to customize UI using pipeline event subscriptions
+  - role-based authorization (resource-server)
+    - spike to understand authorization server and how it is used to implement this
+      - see [blog post by Lee Brandt](https://developer.okta.com/blog/2017/10/04/aspnet-authorization)
+  - profile admin sample for management sdk
+- create a template for each scenario for specific project types
+  - aspnet
+  - razorpage
+  - blazor
+  - MAUI
+- Revisit Visual Studio Wizard - boot strap OKTA application project by creating app and configuring policy given basic inputs
+- create MAUI sample showing authentication control integration
+  - spike - research MAUI to understand how to create sample
+  - create example of integrating custom logic using different renderers with minimal code changes and/or configuration
+- spike to create a multi platform nuget package for supported versions, see [.NET and .NET Core official support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
+- implement Okta specific implementations of interfaces described here: https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-custom-storage-providers
