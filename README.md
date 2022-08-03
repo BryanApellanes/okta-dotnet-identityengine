@@ -17,17 +17,17 @@ This document uses common industry terminology as well as **OIE** specific termi
 ### Ion Spec Terminology
 This document makes use of terminology defined in the ion spec to reference components of an **OIE** response, see section [1.1 Terminology](https://ionspec.org/#_terminology) of the Ion spec.  Common terminology used in this document follows:
 
-- *Member* - A JSON name/value pair as defined in [RFC 7159](https://datatracker.ietf.org/doc/html/rfc7159#section-4)
-- *Root Object* - The single JSON object at the root of an Ion content structure.
-- *Value Object* - A JSON object with a member named `value`.
-- *Collection Object* - A *Value Object* where the value member is a JSON array.  If a JSON value is an element in a *Collection Object's* value array, it is said that the Collection Object *contains* that value.
+- **Member** - A JSON name/value pair as defined in [RFC 7159](https://datatracker.ietf.org/doc/html/rfc7159#section-4)
+- **Root Object** - The single JSON object at the root of an Ion content structure.
+- **Value Object** - A JSON object with a member named `value`.
+- **Collection Object** - A *Value Object* where the value member is a JSON array.  If a JSON value is an element in a *Collection Object's* value array, it is said that the Collection Object *contains* that value.
 
 ### Mv* Pattern Terminology
 This document makes use of terminology commonly associated with *Model-View-* patterns such as [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) and [Mvvm](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel).
 
-- Model - A domain model that defines the structure of data for an application.
-- View - The structure layout and appearance of what a user sees on the screen.  It displays a representation of the model.
-- ViewModel - Loosely defined in this document as the relationship between the model and associated actions that a user may take to affect it.
+- **Model** - A domain model that defines the structure of data for an application.
+- **View** - The structure layout and appearance of what a user sees on the screen.  It displays a representation of the model.
+- **ViewModel** - Loosely defined in this document as the relationship between the model and associated actions that a user may take to affect it.
 
 ### Okta Identity Engine Terminology
 This section describes **OIE** specific terminology.
