@@ -195,7 +195,7 @@ Each _Remediation Object_ included in `IdentityState.Remediations` describes a p
 ![Remediation Render Loop](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/img/OIE-Render-Loop.png)
 
 ### Successful Authentication
-After a _Remediation Invocation_ the [OIE Response](#oie-response) may have a member named `successWithInteractionCode` which is both an [Ion Link](https://ionspec.org/#links) and an [Ion Value Object](#ion-object-model) which provides the necessary information used to acquire an authentication token.  If the `successWithInteractionCode` member is present, authentication has succeeded and you may proceed to retieve an authentication token using the information provided.
+After a _Remediation Invocation_ the [OIE Response](#oie-response) may have a member named `successWithInteractionCode` which is both an [Ion Link](https://ionspec.org/#links) and an [Ion Value Object](#ion-object-model) which provides the necessary information used to acquire an authentication token.  If the `successWithInteractionCode` member is present, authentication has succeeded and you may proceed to retrieve an authentication token using the information provided.
 
 ```json
 {
