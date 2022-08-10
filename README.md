@@ -1,4 +1,4 @@
-# Okta Dynamic Authentication Control (.NET)
+# Okta Identity Engine Dynamic Authentication Control
 ## DRAFT
 This document is a work in progress.
 
@@ -6,7 +6,7 @@ This document is a work in progress.
 The functionality of the current Okta Identity Engine SDK for .NET ****REQUIRES**** policy configuration that results in a finite set of known JSON response data structures in a predetermined but undocumented sequence.  If a feature or functionality is added or changed, or if policy configuration is modified, the resulting response structures **MAY** not be supported by the SDK resulting in unexpected [sample application](https://github.com/okta/okta-idx-dotnet/tree/master/samples/samples-aspnet/embedded-auth-with-sdk) behavior or unexpected [Idx Client](https://github.com/okta/okta-idx-dotnet/blob/master/src/Okta.Idx.Sdk/IdxClient.cs) behavior, including unhandled exceptions. 
 
 ## Abstract
-This document describes **Okta Identity Engine** response structure and a strategy for rendering responses to accept input for the purpose of authentication.  
+This document describes **Okta Identity Engine** response structure and a strategy for rendering responses to accept input for the purpose of authentication.  Information herein provides the basis for the `Dynamic Authentication Control`.  To get started quickly, skip to [Integrations](#integrations).
 
 ## Introduction
 **Okta Identity Engine** hereinafter referred to as **OIE**, is an authentication API modeled as a [state machine](https://developer.mozilla.org/en-US/docs/Glossary/State_machine); this allows a consumer of the API to design a rendering loop that renders responses from **OIE** that is resilient to changes in [Sign-on policies](https://help.okta.com/en/prod/Content/Topics/Security/policies/policies-home.htm).  Code in this repository is a reference implementation referred to as the **Okta Dynamic Authentication Control** herinafter referred to as **ODAC**.  
@@ -25,9 +25,10 @@ This document makes use of terminology defined in the ion spec to reference comp
 ### Mv* Pattern Terminology
 This document makes use of terminology commonly associated with *Model-View-* patterns such as [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) and [Mvvm](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel).
 
-- Model - A domain model that defines the structure of data for an application.
-- View - The structure layout and appearance of what a user sees on the screen.  It displays a representation of the model.
-- ViewModel - Loosely defined in this document as the relationship between the model and associated actions that a user may take to affect it.
+- **Model** - A domain model that defines the structure of data for an application.
+- **View** - The structure layout and appearance of what a user sees on the screen.  It displays a representation of the model.
+- **ViewModel** - Loosely defined in this document as the relationship between the model and associated actions that a user may take to affect it.
+- **Control** - A UI element that enables interaction or displays content.
 
 ### Okta Identity Engine Terminology
 This section describes **OIE** specific terminology.
@@ -155,12 +156,14 @@ To invoke the associated [remediation invocation](#okta-identity-engine-terminol
 }
 ```
 
-## SDK Client
+## Dynamic Authentication Control
+This section describes the building blocks that compose the Dynamic Authentication Control.  In the majority of cases it is not necessary to interact directly with the components described here, this information is provided in the interest of completeness.
+
 Because members included in the OIE response [root object](#ion-spec-terminology) change as the authentication flow progresses, it isn't possible to define a static [class](https://en.wikipedia.org/wiki/Class_(computer_programming)) that represents it.  In order to reference the members of the OIE response [root object](#ion-spec-terminology) an Ion API is recommended.  See also, [Ion Object Model](#ion-object-model).
 
-Additionally, because the underlying design of **OIE** is based on a call and response model, the SDK requires some awareness of the UI and related views.  See also, [SDK Object Model](#sdk-object-model).
-
 ### Ion Object Model
+This section describes the API used to interact with the ion json responses received from OIE.  In the majority of cases it will not be necessary to interact directly with the raw OIE responses, this information is provided in the interest of completeness.
+
 Ion is used to describe the class or object structure of higher level concepts; it does not inherently provide strongly typed classes that describe a problem domain.  Instead, it provides an intermediate language, defined as a superset to json, that defines the class or object structure within a problem domain.  To simplify interaction with Ion based responses, an Ion based API library is recommended.  The reference Ion parsing implemention is found here https://github.com/BryanApellanes/Bam.Ion/tree/bam-ion-v0.2. 
 
 
@@ -181,7 +184,9 @@ IonMember member = obj["href"];
 string href = member.ValueAs<string>();
 ```
 
-### SDK Object Model
+### Dynamic Authentication Control Object Model
+This section describes the API used to interact with the objects that result from the parsed ion json responses received from OIE.
+
 The SDK Object model uses the Ion Object Model internally to provide high level class constructs that describe the **OIE** problem domain.
 
 - **IdentityState** - A class definition that ecapsulates the [Root Object](#root-object) of an [OIE Response](#oie-response).
@@ -235,3 +240,11 @@ After a _Remediation Invocation_ the [OIE Response](#oie-response) may have a me
    }
 }
 ```
+
+## Integrations
+There are three primary ways to integrate the `Dynamic Authentication Control` into your projects.
+
+### Components
+The primary components responsible for exposing OIE functionality are as follows:
+
+![Components](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/img/Components.png)
