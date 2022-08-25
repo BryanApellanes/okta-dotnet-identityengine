@@ -241,10 +241,18 @@ After a _Remediation Invocation_ the [OIE Response](#oie-response) may have a me
 }
 ```
 
-## Integrations
-There are three primary ways to integrate the `Dynamic Authentication Control` into your projects.
+## Integration
+There are three levels of integration the `Dynamic Authentication Control` supports; each provides increasing levels of customization capabilities.
+
+- Minimum code - Include the appropriate `IOktaPlatform` implementation in your project and call GetSignInViewAsync().
+- Custom UI - Provide custom UI for view model data elements.
+- Custom Logic - Provide custom code logic for phases of the pipeline execution that matter to you.
 
 ### Components
 The primary components responsible for exposing OIE functionality are as follows:
 
 ![Components](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/img/Components.png)
+
+### Pipeline Execution
+
+![Pipeline Execution](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/img/Sequence.png)

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Okta.IdentityEngine.AspNetCore\Okta.IdentityEngine.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Okta.IdentityEngine.AspNet\Okta.IdentityEngine.AspNet.csproj" />
     <ProjectReference Include="..\..\Okta.IdentityEngine\Okta.IdentityEngine.csproj" />
   </ItemGroup>
 
