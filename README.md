@@ -251,8 +251,8 @@ There are three levels of integration the `Dynamic Authentication Control` suppo
 ### Components
 The primary components responsible for exposing OIE functionality are as follows:
 
-![Components](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/img/Components.png)
+![Components](../blob/release-v0.1/img/Components.png)
 
 ### Pipeline Execution
 
-![Pipeline Execution](https://github.com/okta/okta-dotnet-identityengine/blob/release-v0.1/img/Sequence.png)
+![Pipeline Execution](../blob/release-v0.1/img/Sequence.png)
