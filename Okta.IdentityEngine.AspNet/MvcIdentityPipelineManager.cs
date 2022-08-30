@@ -3,7 +3,7 @@ using Okta.IdentityEngine.Client;
 using Okta.IdentityEngine.Client.View;
 using Okta.IdentityEngine.Configuration;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public class MvcIdentityPipelineManager : IdentityPipelineManager
     {

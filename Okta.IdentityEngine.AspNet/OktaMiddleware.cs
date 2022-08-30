@@ -1,6 +1,6 @@
 ﻿using Okta.IdentityEngine.Client;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     /// <summary>
     /// Middleware responsible for receiving form posts from rendered sign in forms.

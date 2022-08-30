@@ -1,4 +1,4 @@
-﻿namespace Okta.IdentityEngine.AspNetCore
+﻿namespace Okta.IdentityEngine.AspNet
 {
     public static class ApplicationBuilderExtensions
     {

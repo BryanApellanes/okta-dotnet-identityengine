@@ -2,7 +2,7 @@
 using Okta.IdentityEngine.Client;
 using Okta.IdentityEngine.Client.Data;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public class OktaStateModelRenderResult : OktaSignInViewRenderResult
     {

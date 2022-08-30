@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public abstract class OktaViewRenderResult : IActionResult
     {

@@ -7,7 +7,7 @@ using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
 using Okta.IdentityEngine.Client;
-using Okta.IdentityEngine.Ion;
+using Bam.Ion;
 
 namespace Okta.IdentityEngine.Configuration
 {

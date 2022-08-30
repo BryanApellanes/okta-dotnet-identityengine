@@ -7,8 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Ion\**" />
+    <EmbeddedResource Remove="Ion\**" />
+    <None Remove="Ion\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.16.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\submodules\Bam.Ion\Bam.Ion\Bam.Ion.csproj" />
   </ItemGroup>
 
 </Project>

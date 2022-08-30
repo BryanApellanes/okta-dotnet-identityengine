@@ -6,7 +6,7 @@ using Okta.IdentityEngine.Configuration;
 using Okta.IdentityEngine.Logging;
 using Okta.IdentityEngine.Session;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public static class OktaMvcServiceCollectionExtensions
     {

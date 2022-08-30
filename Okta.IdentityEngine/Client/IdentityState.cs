@@ -5,7 +5,7 @@
 
 using Okta.IdentityEngine.Client;
 using Okta.IdentityEngine.Client.Data;
-using Okta.IdentityEngine.Ion;
+using Bam.Ion;
 using System.Net.Http;
 
 namespace Okta.IdentityEngine.Client

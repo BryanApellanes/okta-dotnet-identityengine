@@ -1,6 +1,6 @@
 ﻿using Okta.IdentityEngine.Configuration;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public class MvcOktaIdentityEngineOptions : OktaIdentityEngineOptions
     {

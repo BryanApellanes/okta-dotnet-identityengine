@@ -1,4 +1,4 @@
-using Okta.IdentityEngine.AspNetCore;
+using Okta.IdentityEngine.AspNet;
 
 var builder = WebApplication.CreateBuilder(args);
 

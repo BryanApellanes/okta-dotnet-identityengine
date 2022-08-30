@@ -4,7 +4,7 @@ using Okta.IdentityEngine.Client.View;
 using Okta.IdentityEngine.Logging;
 using Okta.IdentityEngine.Session;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public class OktaSignInRenderContext : IRenderContext<OktaSignInRenderContext, IActionResult>
     {

@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public static class TagBuilderExtensions
     {

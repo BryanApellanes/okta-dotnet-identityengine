@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
-using Okta.IdentityEngine.AspNetCore;
+using Okta.IdentityEngine.AspNet;
 using FluentAssertions;
 
 namespace Okta.IdentityEngine.Tests

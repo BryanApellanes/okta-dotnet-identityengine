@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Okta.IdentityEngine.Client;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public class OktaRemediationRenderResult : OktaSignInViewRenderResult
     {

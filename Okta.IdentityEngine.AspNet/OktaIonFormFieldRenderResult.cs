@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Okta.IdentityEngine.Ion;
+using Bam.Ion;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public class OktaIonFormFieldRenderResult : OktaSignInViewRenderResult
     {

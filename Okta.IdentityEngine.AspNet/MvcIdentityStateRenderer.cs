@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Okta.IdentityEngine.Client;
 using Okta.IdentityEngine.Client.View;
-using Okta.IdentityEngine.Ion;
+using Bam.Ion;
 
-namespace Okta.IdentityEngine.AspNetCore
+namespace Okta.IdentityEngine.AspNet
 {
     public class MvcIdentityStateRenderer : IdentityStateRenderer<OktaSignInRenderContext, IActionResult>
     {

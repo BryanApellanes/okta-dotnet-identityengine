@@ -1,4 +1,4 @@
-﻿namespace Okta.IdentityEngine.AspNetCore
+﻿namespace Okta.IdentityEngine.AspNet
 {
     public abstract class OktaSignInViewRenderResult : OktaViewRenderResult
     {

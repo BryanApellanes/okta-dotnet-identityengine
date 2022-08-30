@@ -4,7 +4,7 @@
 // </copyright>
 
 using Okta.IdentityEngine.Client.Data;
-using Okta.IdentityEngine.Ion;
+using Bam.Ion;
 
 namespace Okta.IdentityEngine.Client
 {
